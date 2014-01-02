@@ -73,7 +73,7 @@ define service {
 # KR - services for HA Controllers - start
 define service {
     service_description RabbitMQ
-    hostgroup_name rabbitmq
+    hostgroup_name TitaniumControllers
     check_command check_rabbitmq
     contact_groups admins
     use default-service
@@ -81,7 +81,7 @@ define service {
 
 define service {
     service_description RabbitMQ-Cluster
-    hostgroup_name rabbitmq
+    hostgroup_name TitaniumControllers
     check_command check_rabbitmq_cluster
     contact_groups admins
     use default-service
@@ -89,7 +89,7 @@ define service {
 
 define service {
     service_description Percona-State
-    hostgroup_name percona
+    hostgroup_name TitaniumControllers
     check_command check_percona_state
     contact_groups admins
     use default-service
@@ -97,7 +97,7 @@ define service {
 
 define service {
     service_description Percona-Cluster
-    hostgroup_name percona
+    hostgroup_name TitaniumControllers
     check_command check_percona_cluster
     contact_groups admins
     use default-service
