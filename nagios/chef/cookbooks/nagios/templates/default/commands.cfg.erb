@@ -33,10 +33,10 @@ define command {
   command_line    $USER1$/check_nrpe -H $HOSTADDRESS$ -c check_collectd_client -t 20
 }
 
-define command {
-  command_name    check_rabbitmq
-  command_line    $USER1$/check_nrpe -H $HOSTADDRESS$ -c check_rabbitmq -t 20
-}
+#define command {
+#  command_name    check_rabbitmq
+#  command_line    $USER1$/check_nrpe -H $HOSTADDRESS$ -c check_rabbitmq -t 20
+#}
 
 define command {
   command_name    check_authz
@@ -373,6 +373,31 @@ define command {
 #        command_line /usr/lib/nagios/plugins/process_perfdata.pl -d HOSTPERFDATA
 #}
 
+
+# KR - commands for HA Controllers - start
+
+define command {
+  command_name check_rabbitmq
+  command_line $USER1$/check_nrpe -H $HOSTADDRESS$ -c check_rabbitmq -t 20
+}
+
+define command {
+  command_name check_rabbitmq_cluster
+  command_line $USER1$/check_nrpe -H $HOSTADDRESS$ -c check_rabbitmq_cluster -t 20
+}
+
+define command {
+  command_name check_percona_state
+  command_line $USER1$/check_nrpe -H $HOSTADDRESS$ -c check_percona_state -t 20
+}
+
+define command {
+  command_name check_percona_cluster
+  command_line $USER1$/check_nrpe -H $HOSTADDRESS$ -c check_percona_cluster -t 20
+}
+# KR - END
+
+
 <% @nova_commands.each { |cmd| %>
 define command {
 	command_name    <%= cmd %>
@@ -399,27 +424,4 @@ define command {
 }
 <% end %>
 
-# KR - commands for HA Controllers - start
-
-define command {
-  command_name check_rabbitmq
-  command_line $USER1$/check_nrpe -H $HOSTADDRESS$ -c check_rabbitmq -t 20
-}
-
-define command {
-  command_name check_rabbitmq_cluster
-  command_line $USER1$/check_nrpe -H $HOSTADDRESS$ -c check_rabbitmq_cluster -t 20
-}
-
-define command {
-  command_name check_percona_state
-  command_line $USER1$/check_nrpe -H $HOSTADDRESS$ -c check_percona_state -t 20
-}
-
-define command {
-  command_name check_percona_cluster
-  command_line $USER1$/check_nrpe -H $HOSTADDRESS$ -c check_percona_cluster -t 20
-}
-
-# KR - END
 
