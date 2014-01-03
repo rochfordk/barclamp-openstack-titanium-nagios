@@ -8,7 +8,7 @@ define host {
   host_name <%= n["hostname"] %>
 <% if n.roles.nil? -%>
   hostgroups all
-<% else if n.roles.to_a.include? 'haproxy' -%>
+<% else if n.roles.to_a.include?('haproxy') -%>
   hostgroups TitaniumControllers
 <% else -%>
   hostgroups <%= n["platform"] %>,<%= n.roles.to_a.join(",") %>
