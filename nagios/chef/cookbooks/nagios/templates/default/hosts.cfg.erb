@@ -9,7 +9,7 @@ define host {
 <% if n.roles.nil? -%>
   hostgroups all
 <% else -%>
-  hostgroups TitaniumControllers
+  hostgroups TitaniumControllers,<%= n["platform"] %>,<%= n.roles.to_a.join(",") %>
 <% end -%>
 }
 
