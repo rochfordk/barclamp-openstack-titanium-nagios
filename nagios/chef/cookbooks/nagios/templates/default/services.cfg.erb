@@ -105,8 +105,10 @@ define service {
     use default-service
 }
 
+<% end -%>
+<% unless @service_hosts['haproxy'].nil? -%>
 define service {
-    service_description Load-Balancer
+    service_description HA-Proxy
     hostgroup_name TitaniumControllers
     check_command check_haproxy
     contact_groups admins
