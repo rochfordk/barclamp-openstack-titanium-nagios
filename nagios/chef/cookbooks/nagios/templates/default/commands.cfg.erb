@@ -395,6 +395,11 @@ define command {
   command_name check_percona_cluster
   command_line $USER1$/check_nrpe -H $HOSTADDRESS$ -c check_percona_cluster -t 20
 }
+
+define command {
+  command_name check_haproxy
+  command_line $USER1$/check_nrpe -H $HOSTADDRESS$ -c check_haproxy -t 20
+}
 # KR - END
 
 
