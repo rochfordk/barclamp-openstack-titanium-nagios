@@ -104,6 +104,14 @@ define service {
     contact_groups admins
     use default-service
 }
+
+define service {
+    service_description Load-Balancer
+    hostgroup_name TitaniumControllers
+    check_command check_haproxy
+    contact_groups admins
+    use default-service
+}
 <% end -%>
 # KR - END
 
