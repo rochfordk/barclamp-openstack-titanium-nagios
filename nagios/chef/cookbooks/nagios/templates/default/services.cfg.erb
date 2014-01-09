@@ -105,6 +105,15 @@ define service {
     use default-service
 }
 <% end -%>
+<% unless @service_hosts['haproxy'].nil? -%>
+define service {
+    service_description Load-Balancer
+    hostgroup_name TitaniumControllers
+    check_command check_haproxy
+    contact_groups admins
+    use default-service
+}
+<% end -%>
 # KR - END
 
 <% unless @service_hosts['ganglia-client'].nil? and @service_hosts['ganglia-server'].nil? -%>
